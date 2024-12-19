@@ -1,18 +1,18 @@
 locals {
-  function_host_code = [
+  function_test_code_files = [
     "IntegrationTests.cs",
     "UnitTests.cs"
   ]
 }
 
-resource "github_repository_file" "function_host_files" {
+resource "github_repository_file" "function_test_code_files" {
 
-  count = length(local.function_host_files)
+  count = length(local.function_test_code_files)
 
   repository = var.repository
   branch     = var.branch
-  file       = "${var.path}/${var.root_namespace}.Tests/${local.function_host_files[count.index]}"
-  content = templatefile("${path.module}/files/RootNamespace.Tests/${local.function_host_files[count.index]}.t4",
+  file       = "${var.path}/${var.root_namespace}.Tests/${local.function_test_code_files[count.index]}"
+  content = templatefile("${path.module}/files/RootNamespace.Tests/${local.function_test_code_files[count.index]}.t4",
     {
       root_namespace = var.root_namespace
     }
@@ -24,7 +24,7 @@ resource "github_repository_file" "function_host_files" {
 
 }
 
-resource "github_repository_file" "project_file" {
+resource "github_repository_file" "function_test_project_file" {
 
   repository = var.repository
   branch     = var.branch
