@@ -60,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: dotnet-deployment
-        path: '$${{ env.WorkingDirectory }}/publish/deployment.zip'
+        path: '**/deployment.zip'
 
   terraform-plan:
     runs-on: ubuntu-latest
