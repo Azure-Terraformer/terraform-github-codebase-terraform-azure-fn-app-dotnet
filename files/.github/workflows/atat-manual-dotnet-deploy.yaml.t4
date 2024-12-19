@@ -11,7 +11,7 @@ on:
 env:
   BuildConfiguration: Release
   WorkingDirectory: ${working_directory}
-  SolutionFile: ${root_namespace}.sln
+  SolutionFile: ${root_namespace}.FunctionHost.csproj
   DotnetVersion: 8.x
 
 concurrency:
