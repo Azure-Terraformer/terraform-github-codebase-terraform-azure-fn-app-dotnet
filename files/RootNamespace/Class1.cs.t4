@@ -1,4 +1,4 @@
-﻿namespace ${RootNamespace}
+﻿namespace ${root_namespace}
 {
     public class Class1
     {
