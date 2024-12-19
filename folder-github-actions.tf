@@ -1,10 +1,4 @@
 locals {
-  original_yaml    = file("${path.module}/files/.github/workflows/atat-pull-request-terraform-plan.yaml")
-  escaped_yaml     = replace(local.original_yaml, "$${", "$$${")
-  tf_template_yaml = replace(local.escaped_yaml, "$TFTPL", "$")
-}
-
-locals {
   files = [
     ".github/workflows/atat-pull-request-dotnet-integration-tests.yaml",
     ".github/workflows/atat-pull-request-dotnet-unit-tests.yaml"
