@@ -12,12 +12,13 @@ resource "github_repository_file" "bulk" {
   repository = var.repository
   branch     = var.branch
   file       = local.files[count.index]
+
+  # second, replace $TFTPL with $ to make it ${}
+  # first escape the existing ${}, this will make github ${{ }} escaped and look like $${{ }}
   content = templatestring(
-    # second, replace $TFTPL with $ to make it ${}
     replace(
-      # first escape the existing ${}, this will make github ${{ }} escaped and look like $${{ }}
       replace(
-        file("${path.module}/files/.github/workflows/${local.files[count.index]}.t4"),
+        file("${path.module}/files/${local.files[count.index]}.t4"),
         "$${", "$$${"
       ),
       "$TFTPL", "$"
