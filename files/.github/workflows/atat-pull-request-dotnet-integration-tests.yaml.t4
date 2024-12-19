@@ -5,8 +5,8 @@ on:
 
 env:
   BuildConfiguration: Release
-  WorkingDirectory: $TFTPL{working_directory}
-  SolutionFile: $TFTPL{root_namespace}.sln
+  WorkingDirectory: ${working_directory}
+  SolutionFile: ${root_namespace}.sln
   TestCategory: Integration
 
 jobs:
@@ -26,23 +26,23 @@ jobs:
           dotnet-version: 8.x
 
       - name: Restore dependencies
-        working-directory: ${{ env.WorkingDirectory }}
+        working-directory: $${{ env.WorkingDirectory }}
         run: |
-          dotnet restore ${{ env.SolutionFile }}
+          dotnet restore $${{ env.SolutionFile }}
 
       - name: Build solution
-        working-directory: ${{ env.WorkingDirectory }}
+        working-directory: $${{ env.WorkingDirectory }}
         run: |
-          dotnet build ${{ env.SolutionFile }} --configuration ${{ env.BuildConfiguration }}
+          dotnet build $${{ env.SolutionFile }} --configuration $${{ env.BuildConfiguration }}
 
       - name: Run tests with code coverage
         env:
-          MEDIUM_ACCESS_TOKEN: ${{ secrets.MEDIUM_ACCESS_TOKEN }}
-        working-directory: ${{ env.WorkingDirectory }}
+          MEDIUM_ACCESS_TOKEN: $${{ secrets.MEDIUM_ACCESS_TOKEN }}
+        working-directory: $${{ env.WorkingDirectory }}
         run: |
-          dotnet test ${{ env.SolutionFile }} \
-            --configuration ${{ env.BuildConfiguration }} \
-            --filter "Category=${{ env.TestCategory }}" \
+          dotnet test $${{ env.SolutionFile }} \
+            --configuration $${{ env.BuildConfiguration }} \
+            --filter "Category=$${{ env.TestCategory }}" \
             --collect:"XPlat Code Coverage" \
             -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 

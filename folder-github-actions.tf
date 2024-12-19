@@ -15,15 +15,7 @@ resource "github_repository_file" "bulk" {
 
   # second, replace $TFTPL with $ to make it ${}
   # first escape the existing ${}, this will make github ${{ }} escaped and look like $${{ }}
-  content = templatestring(
-    replace(
-      replace(
-        file("${path.module}/files/${local.files[count.index]}.t4"),
-        "$${", "$$${"
-      ),
-      "$TFTPL", "$"
-    )
-    ,
+  content = templatefile("${path.module}/files/${local.files[count.index]}.t4",
     {
       working_directory = var.path
       root_namespace    = var.root_namespace
