@@ -224,6 +224,7 @@ jobs:
         subscription-id: $${{ vars.ARM_SUBSCRIPTION_ID }}
 
     - name: Deploy
+      working-directory: $${{ env.WorkingDirectory }}
       env:
         ARM_SUBSCRIPTION_ID: $${{ vars.ARM_SUBSCRIPTION_ID }}
         RESOURCE_GROUP_NAME: $${{needs.terraform-apply.outputs.resource_group_name}}
