@@ -36,8 +36,6 @@ jobs:
           dotnet build $${{ env.SolutionFile }} --configuration $${{ env.BuildConfiguration }}
 
       - name: Run tests with code coverage
-        env:
-          MEDIUM_ACCESS_TOKEN: $${{ secrets.MEDIUM_ACCESS_TOKEN }}
         working-directory: $${{ env.WorkingDirectory }}
         run: |
           dotnet test $${{ env.SolutionFile }} \

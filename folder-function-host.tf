@@ -2,7 +2,6 @@ locals {
   function_host_files = [
     "host.json",
     "local.settings.json",
-    "Properties/launchSettings.json",
     "Properties/serviceDependencies.json",
     "Properties/serviceDependencies.local.json"
   ]
@@ -25,6 +24,7 @@ resource "github_repository_file" "function_host_files" {
 
 locals {
   function_host_code_files = [
+    "Properties/launchSettings.json",
     "Function1.cs",
     "Program.cs",
     "Startup.cs"

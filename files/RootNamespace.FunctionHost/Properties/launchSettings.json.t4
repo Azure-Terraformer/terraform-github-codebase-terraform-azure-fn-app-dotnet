@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Qonq.Medium.FunctionHost": {
+    "${root_namespace}.FunctionHost": {
       "commandName": "Project",
       "commandLineArgs": "--port 7169",
       "launchBrowser": false
