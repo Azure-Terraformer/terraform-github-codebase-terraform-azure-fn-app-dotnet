@@ -1,5 +1,6 @@
 locals {
   files = [
+    ".github/workflows/atat-manual-dotnet-deploy.yaml",
     ".github/workflows/atat-manual-dotnet-integration-tests.yaml",
     ".github/workflows/atat-manual-dotnet-unit-tests.yaml",
     ".github/workflows/atat-pull-request-dotnet-integration-tests.yaml",
