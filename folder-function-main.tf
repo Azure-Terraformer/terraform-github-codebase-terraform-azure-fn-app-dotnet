@@ -4,7 +4,7 @@ locals {
   ]
 }
 
-resource "github_repository_file" "function_host_files" {
+resource "github_repository_file" "function_main_code_files" {
 
   count = length(local.function_main_code_files)
 
