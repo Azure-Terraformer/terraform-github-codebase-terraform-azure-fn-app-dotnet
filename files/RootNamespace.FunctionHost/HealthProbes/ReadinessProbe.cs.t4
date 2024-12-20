@@ -26,7 +26,7 @@ namespace ${root_namespace}.FunctionHost.HealthProbes
         [Function("health-ready")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "health/ready")] HttpRequest req)
         {
-            var version = typeof(Ping)?.Assembly?.GetName()?.Version?.ToString(fieldCount: 4);
+            var version = typeof(ReadinessProbe)?.Assembly?.GetName()?.Version?.ToString(fieldCount: 4);
             var model = new PingModel() { Answer = "Pong", Version = version };
             _logger.LogInformation($"READY {JsonSerializer.Serialize(model)}", _logger);
             _telemetryClient.TrackEvent("READY");
