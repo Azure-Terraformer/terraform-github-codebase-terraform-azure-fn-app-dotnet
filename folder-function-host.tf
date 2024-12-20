@@ -27,6 +27,7 @@ locals {
     "Properties/launchSettings.json",
     "Function1.cs",
     "Program.cs",
+    "PingModel.cs.tf",
     "HealthProbes/LivenessProbe.cs",
     "HealthProbes/ReadinessProbe.cs"
   ]

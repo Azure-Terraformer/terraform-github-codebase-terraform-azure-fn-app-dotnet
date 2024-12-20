@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Qonq.YouTube.FunctionHost
+namespace ${root_namespace}.FunctionHost
 {
     public class PingModel
     {
