@@ -27,7 +27,8 @@ locals {
     "Properties/launchSettings.json",
     "Function1.cs",
     "Program.cs",
-    "Startup.cs"
+    "HealthProbes/LivenessProbe.cs",
+    "HealthProbes/ReadinessProbe.cs"
   ]
 }
 
