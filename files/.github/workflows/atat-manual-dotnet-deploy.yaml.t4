@@ -11,7 +11,7 @@ on:
 env:
   BuildConfiguration: Release
   WorkingDirectory: ${working_directory}
-  SolutionFile: ${root_namespace}.FunctionHost.csproj
+  SolutionFile: ${root_namespace}.sln
   DotnetVersion: 8.x
 
 concurrency:
@@ -49,7 +49,7 @@ jobs:
     - name: Publish solution
       working-directory: $${{ env.WorkingDirectory }}
       run: |
-        dotnet publish $${{ env.SolutionFile }} --configuration $${{ env.BuildConfiguration }} -o ./publish
+        dotnet publish ${root_namespace}.FunctionHost.csproj --configuration $${{ env.BuildConfiguration }} -o ./publish
 
     - name: Generate the Deployment Package
       working-directory: $${{ env.WorkingDirectory }}/publish
