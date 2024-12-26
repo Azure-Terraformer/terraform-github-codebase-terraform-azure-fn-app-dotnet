@@ -18,8 +18,9 @@ This [Microsoft Learn article](https://learn.microsoft.com/en-us/azure/azure-fun
 ### App Settings Supported by OS and SKU for Function Apps
 This [GitHub wiki page](https://github.com/Azure-Samples/function-app-arm-templates/wiki/App-Settings-for-Function-Apps#app-settings-supported-by-os-and-sku) details the app settings supported by different operating systems and SKUs for Azure Function Apps. Familiarity with these settings ensures that your Function Apps are configured correctly, optimizing performance and compatibility based on the chosen OS and SKU.
 
-## App Insights
-https://aka.ms/AAt8mw4
+### App Insights Configuration within the .NET Solution
+This [Microsoft Learning article](https://aka.ms/AAt8mw4) explains how to configure a .NET isolated Azure Functions application to emit its logs and telemetry directly to Azure Application Insights.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
