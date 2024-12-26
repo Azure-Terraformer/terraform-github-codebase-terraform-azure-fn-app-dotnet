@@ -24,12 +24,12 @@ resource "github_repository_file" "function_host_files" {
 
 locals {
   function_host_code_files = [
+    "HealthProbes/LivenessProbe.cs",
+    "HealthProbes/ReadinessProbe.cs",
     "Properties/launchSettings.json",
     "Function1.cs",
-    "Program.cs",
     "PingModel.cs",
-    "HealthProbes/LivenessProbe.cs",
-    "HealthProbes/ReadinessProbe.cs"
+    "Program.cs"
   ]
 }
 
