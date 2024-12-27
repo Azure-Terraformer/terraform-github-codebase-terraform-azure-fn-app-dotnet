@@ -9,12 +9,12 @@ locals {
 
 resource "github_repository_file" "function_host_files" {
 
-  count = length(local.function_host_files)
+  for_each = toset(local.function_host_files)
 
   repository          = var.repository
   branch              = var.branch
-  file                = "${var.path}/${var.root_namespace}.FunctionHost/${local.function_host_files[count.index]}"
-  content             = file("${path.module}/files/RootNamespace.FunctionHost/${local.function_host_files[count.index]}.t4")
+  file                = "${var.path}/${var.root_namespace}.FunctionHost/${each.key}"
+  content             = file("${path.module}/files/RootNamespace.FunctionHost/${each.key}.t4")
   commit_message      = "Managed by Terraform"
   commit_author       = var.commit_user.name
   commit_email        = var.commit_user.email
@@ -35,12 +35,12 @@ locals {
 
 resource "github_repository_file" "function_host_code_files" {
 
-  count = length(local.function_host_code_files)
+  for_each = toset(local.function_host_code_files)
 
   repository = var.repository
   branch     = var.branch
-  file       = "${var.path}/${var.root_namespace}.FunctionHost/${local.function_host_code_files[count.index]}"
-  content = templatefile("${path.module}/files/RootNamespace.FunctionHost/${local.function_host_code_files[count.index]}.t4",
+  file       = "${var.path}/${var.root_namespace}.FunctionHost/${each.key}"
+  content = templatefile("${path.module}/files/RootNamespace.FunctionHost/${each.key}.t4",
     {
       root_namespace = var.root_namespace
     }
