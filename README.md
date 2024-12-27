@@ -1,6 +1,38 @@
 # Overview
 
-The Azure Function App Codebase Terraform module streamlines the provisioning and management of a C# .NET source codebase for Azure Functions within a designated GitHub repository. Building upon the foundational Azure Function Core module, it leverages core-provisioned resources as data sources to ensure seamless integration across multiple regional stamps. This module automates the creation and committing of essential source files, project configurations, and GitHub Actions workflows, facilitating efficient deployment, unit testing, and integration testing processes. By templating and managing these files through Terraform, the module ensures a consistent, scalable, and maintainable codebase, enabling developers to focus on building robust Azure Functions while maintaining best practices in infrastructure as code (IaC) and continuous integration/continuous deployment (CI/CD).
+The Azure Function App Codebase Terraform module streamlines the provisioning and management of a C# .NET source codebase for Azure Functions within a designated GitHub repository. Building upon the foundational Azure Function Core module, it leverages core-provisioned resources as data sources to ensure seamless integration across multiple regional stamps. This module automates the creation and committing of essential source files, project configurations, and GitHub Actions workflows, facilitating efficient deployment, unit testing, and integration testing processes. 
+
+By templating and managing these files through Terraform, the module ensures a consistent, scalable, and maintainable codebase, enabling developers to focus on building robust Azure Functions while maintaining best practices in infrastructure as code (IaC) and continuous integration/continuous deployment (CI/CD).
+
+## Run the Tests
+
+There are Terraform Tests included in this repository. In order to run them you need to setup a `.debug.tfvars` file that includes your GitHub user account's name and email address.
+
+```
+github_username = "Your Name"
+github_email    = "you@me.com"
+```
+
+You need to login to GitHub using the GitHub CLI.
+
+```
+gh auth login
+```
+
+However, you're not done yet, you need to explicitly allow yourself to delete GitHub repositories.
+
+```
+gh auth refresh -h github.com -s delete_repo
+```
+
+After that you can run the tests by executing the following from the root folder.
+
+```
+terraform init
+terraform test -var-file="./tests/.debug.tfvars" -verbose
+```
+
+This will execute the `baseline.tftest.hcl`. The setup module creates a new GitHub repository and branch that this module will deploy it's source code files into.
 
 ## References
 

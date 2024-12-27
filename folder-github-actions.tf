@@ -1,5 +1,5 @@
 locals {
-  files = [
+  github_actions_yaml_files = [
     ".github/workflows/atat-manual-dotnet-deploy.yaml",
     ".github/workflows/atat-manual-dotnet-integration-tests.yaml",
     ".github/workflows/atat-manual-dotnet-unit-tests.yaml",
@@ -10,15 +10,15 @@ locals {
 
 resource "github_repository_file" "bulk" {
 
-  count = length(local.files)
+  for_each = toset(local.github_actions_yaml_files)
 
   repository = var.repository
   branch     = var.branch
-  file       = local.files[count.index]
+  file       = each.key
 
   # second, replace $TFTPL with $ to make it ${}
   # first escape the existing ${}, this will make github ${{ }} escaped and look like $${{ }}
-  content = templatefile("${path.module}/files/${local.files[count.index]}.t4",
+  content = templatefile("${path.module}/files/${each.key}.t4",
     {
       working_directory = var.path
       root_namespace    = var.root_namespace
