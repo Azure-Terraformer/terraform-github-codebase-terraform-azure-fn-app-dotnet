@@ -4,6 +4,9 @@ resource "random_string" "repository_name" {
   upper   = false
 }
 
+data "github_user" "current" {
+  username = ""
+}
 
 resource "github_repository" "main" {
 

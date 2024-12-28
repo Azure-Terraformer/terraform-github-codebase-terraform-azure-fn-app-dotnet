@@ -1,16 +1,16 @@
-run "setup" {
+run "arrange" {
   module {
     source = "./tests/setup"
   }
 }
 
-run "environment" {
+run "act" {
   module {
     source = "./"
   }
 
   variables {
-    repository     = run.setup.repository_name
+    repository     = run.arrange.repository_name
     branch         = "main"
     path           = "src"
     root_namespace = "ATAT.Test"
@@ -20,4 +20,19 @@ run "environment" {
     }
   }
 
+}
+
+run "assert" {
+  module {
+    source = "./tests/final"
+  }
+
+  variables {
+    endpoint = "https://www.github.com/${run.arrange.username}/${run.arrange.repository_name}/blob/main/README.md"
+  }
+
+  assert {
+    condition     = data.http.readme.status_code == 200
+    error_message = "GitHub with HTTP status ${data.http.readme.status_code}"
+  }
 }
