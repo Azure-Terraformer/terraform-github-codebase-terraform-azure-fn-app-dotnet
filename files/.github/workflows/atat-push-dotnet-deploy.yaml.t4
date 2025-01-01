@@ -47,7 +47,7 @@ jobs:
     - name: Publish solution
       working-directory: $${{ env.WorkingDirectory }}
       run: |
-        dotnet publish ./Qonq.YouTube.FunctionHost/Qonq.YouTube.FunctionHost.csproj \
+        dotnet publish ./${root_namespace}.FunctionHost/${root_namespace}.FunctionHost.csproj \
           --configuration $${{ env.BuildConfiguration }} \
           --output ./publish
 
