@@ -26,6 +26,8 @@ locals {
   function_host_code_files = [
     "HealthProbes/LivenessProbe.cs",
     "HealthProbes/ReadinessProbe.cs",
+    "PubSub/InternalPublisher.cs",
+    "PubSub/InternalSubscriber.cs",
     "Properties/launchSettings.json",
     "Function1.cs",
     "PingModel.cs",
