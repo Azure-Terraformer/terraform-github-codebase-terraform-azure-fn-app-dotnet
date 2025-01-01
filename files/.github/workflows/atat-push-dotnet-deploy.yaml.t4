@@ -8,8 +8,8 @@ on:
 
 env:
   BuildConfiguration: Release
-  WorkingDirectory: src/dotnet
-  SolutionFile: Qonq.YouTube.sln
+  WorkingDirectory: ${working_directory}
+  SolutionFile: ${root_namespace}.sln
   DotnetVersion: 8.x
 
 concurrency:

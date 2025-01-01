@@ -50,7 +50,9 @@ resource "github_repository_file" "push_deploy" {
 
   content = templatestring(local.merge_original_yaml,
     {
-      environment_name = each.key
+      working_directory = var.path
+      root_namespace    = var.root_namespace
+      environment_name  = each.key
     }
   )
 
