@@ -33,7 +33,7 @@ resource "github_repository_file" "bulk" {
 }
 
 locals {
-  merge_original_yaml = file("${path.module}/files/.github/workflows/atat-push-dotnet-deploy.yaml")
+  merge_original_yaml = file("${path.module}/files/.github/workflows/atat-push-dotnet-deploy.yaml.t4")
 }
 
 resource "github_repository_file" "push_deploy" {

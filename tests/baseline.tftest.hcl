@@ -18,6 +18,11 @@ run "environment" {
       name  = var.github_username
       email = var.github_email
     }
+    environments = {
+      dev  = "develop"
+      test = "release"
+      prod = "main"
+    }
   }
 
 }
